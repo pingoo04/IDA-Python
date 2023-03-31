@@ -8,6 +8,11 @@ class Pique:
 		self.liste = []
 		self.nb_cubes = 0
 
+	def get_cube(self, ci):
+		if(ci < self.nb_cubes):	
+			return self.liste[ci]
+		return None
+		
 	#retourne le premier element de la pique et sa hauteur sur la pique
 	def peek(self):
 		return self.liste[len(self.liste)-1], len(self.liste)-1
