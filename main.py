@@ -21,3 +21,6 @@ print(ida.estBut(game))
 list = game.opPoss()
 for i in range(len(list)):
 	print(list[i])
+
+print(ida.h(game))
+
