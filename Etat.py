@@ -1,6 +1,5 @@
 from Pique import Pique
 from Cube import Cube
-from Cube import cube_equals
 from enum import Enum
 import copy
 
@@ -54,23 +53,22 @@ class Etat:
 	def get_pique(self, pi):
 		return self.jeu[pi]
 
-	def get_cube(self, pi, ci):
-		return self.get_pique(pi).get_cube(ci)
-		
 	#affiche l'etat
 	def afficher_etat(self):
 
 		for i in range(self.jeu[0].nb_cubes_max):
 			for j in range(len(self.jeu)):
 				print('|', end='')
-
-				#Inverser affichage
-				indice = self.jeu[j].nb_cubes_max - i - 1
-				#Vérifier que l'indice existe
-				if (self.jeu[j].nb_cubes > indice):
-					print(self.jeu[j].liste[indice].chiffre, end='')
-				else:
+				if (self.jeu[j].nb_cubes == 0):
 					print(" ", end='')
+				else:
+					#Inverser affichage
+					indice = self.jeu[j].nb_cubes_max - i - 1
+					#Vérifier que l'indice existe
+					if (self.jeu[j].nb_cubes > indice):
+						print(self.jeu[j].liste[indice].chiffre, end='')
+					else:
+						print(" ", end='')
 				print('|', end='')
 			print("")
 
@@ -150,13 +148,5 @@ class Etat:
 		else:
 			self.cout_non_uniforme(etat.calc_cout_non_uni(op))
 
-	#renvoie le nombre de cubes qui sont mal placés
-	def nombre_Mal_Mis(self, but):
-		nbMalMis=0
-		for i in range(self.get_nb_piques()):
-			for j in range(self.get_cubes_par_pique()):
-				
-				if (not cube_equals(self.get_cube(i, j), but.get_cube(i, j) )):
-					nbMalMis+=1
-		return nbMalMis
+
 		

@@ -14,9 +14,6 @@ class Ida:
 	
 	def g(self, etat):
 		return etat.get_cout()
-
-	def h(self, etat):
-		return etat.nombre_Mal_Mis(self.but)
 	
-	def heuristique(self, etat):
-		return self.g(etat)+self.h(etat)
+	def heuristique(g, h):
+		pass
